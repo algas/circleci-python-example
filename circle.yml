@@ -5,7 +5,7 @@ machine:
 dependencies:
   pre:
     - docker info
-    - docker pull algas/circleci-python-example
+    - docker pull python:3.6
 
   override:
     - docker build --rm=false -t algas/circleci-python-example .

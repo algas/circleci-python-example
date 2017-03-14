@@ -3,12 +3,17 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   pre:
-    - docker info
-    - docker pull python:3.6
+    - if [[ -e ~/docker/docker.tar ]]; then docker load --input ~/docker/docker.tar; fi
 
   override:
     - docker build --rm=false -t algas/circleci-python-example .
+
+  post:
+    - if [[ ! -d ~/docker ]]; then mkdir -p ~/docker; fi
+    - docker save algas/circleci-python-example > ~/docker/docker.tar
 
 test:
   pre:

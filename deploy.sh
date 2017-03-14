@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if git show $WERCKER_GIT_COMMIT --format=%s%b -q | grep '\[deploy\]' > /dev/null
+if git show --format=%s%b -q | grep '\[deploy\]' > /dev/null
 then
   echo 'deploy'
 else

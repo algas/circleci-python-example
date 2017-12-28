@@ -10,7 +10,7 @@ jobs:
           command: sudo apt-get install -y curl
       - run:
           name: install dependencies
-          command: pip install -r requirements.txt
+          command: sudo pip install -r requirements.txt
       - run:
           name: run
           command: python app.py

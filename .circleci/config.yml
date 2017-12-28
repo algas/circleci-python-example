@@ -2,12 +2,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1
+      - image: algas/circleci-python-example:latest
     steps:
       - checkout
       - run:
-          name: install dependencies
-          command: sudo pip install -r requirements.txt
+          name: copy
+          command: cp /work/hoge ./
+      - run:
+          name: cat
+          command: cat /work/hoge
       - run:
           name: run
           command: python app.py

@@ -1,6 +1,3 @@
-FROM python:3.6
+FROM circleci/python:3.6.1
 COPY app.py requirements.txt ./
 RUN pip install -r requirements.txt
-EXPOSE 8080
-CMD ["app.py"]
-ENTRYPOINT ["/usr/local/bin/python"]

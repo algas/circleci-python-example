@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9.3-browsers
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: sudo apt-get install -y curl
+      - run:
+          name: install dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: run
+          command: python app.py
+          background: true
+      - run:
+          name: test
+          command: sleep 5 && curl --retry 10 --retry-delay 5 -v http://localhost:8080
